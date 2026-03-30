@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Melbourne Cargo</title>
+</head>
+<body>
+
+<h2>Transport Price Calculator</h2>
+
+Distance (km): <input id="d"><br><br>
+Rate per km: <input id="r"><br><br>
+Base cost: <input id="b"><br><br>
+Weight (kg): <input id="w"><br><br>
+Length (cm): <input id="l"><br><br>
+Width (cm): <input id="wi"><br><br>
+Height (cm): <input id="h"><br><br>
+
+<button onclick="calc()">Calculate</button>
+
+<h3 id="result"></h3>
+
+<script>
+function calc() {
+  let d = Number(document.getElementById('d').value);
+  let r = Number(document.getElementById('r').value);
+  let b = Number(document.getElementById('b').value);
+  let w = Number(document.getElementById('w').value);
+  let l = Number(document.getElementById('l').value);
+  let wi = Number(document.getElementById('wi').value);
+  let h = Number(document.getElementById('h').value);
+
+  let volumetric = (l * wi * h) / 5000;
+  let chargeable = Math.max(w, volumetric);
+
+  let total = (d * r) + b + (chargeable * 0.6);
+
+  document.getElementById('result').innerText = "Total Price: $" + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>
